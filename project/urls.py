@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app.views import update_like_dislike
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',update_like_dislike,name='update_like_dislike'),
 ]
