@@ -1,2 +1,39 @@
-<h1>like :  {{like}}</h1>
-<h1>dislike :  {{dislike}}</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'images/logo.png' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      href="https://unpkg.com/filepond@^4/dist/filepond.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="like-dislike-buttons">
+        <button type="submit" id="like-button" class="btn btn-success" name="like_button">Like</button>
+        <button type="submit" id="dislike-button" class="btn btn-danger" name= "dislike_button">Dislike</button>
+      </div>
+      <div id="like-dislike-counts">
+        <p>Likes: {{ like }}</p>
+        <p>Dislikes: {{ dislike }}</p>
+        
+      </div>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</html>
