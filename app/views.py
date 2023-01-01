@@ -1,29 +1,36 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from .models import ProjectModel
 
-def update_like_dislike(request):
+def home(request):
 
     data = ProjectModel.objects.first()
     likes = data.like
     dislikes = data.dislike
-
-
-    if request.POST.get('like_button'):
-        likes += 1
     
-    if request.POST.get('dislike_button'):
-        dislikes += 1
-
-    data.like = likes
-    data.dislike= dislikes
-
-    data.save()
-    
-
-    print(likes)
-    print(dislikes)
-
-
     context = {'like':likes , 'dislike' : dislikes}
 
     return render(request , 'templates/home.html' , context)
+
+
+def like(request):
+    data = ProjectModel.objects.first()
+    data.like += 1
+    data.save()
+
+    # print(data.like)
+    # print(data.dislike)
+
+    context = {"like":data.like , "dislike" : data.dislike}
+
+
+    return JsonResponse(context)
+
+def dislike(request):
+    data = ProjectModel.objects.first()
+    data.dislike += 1
+    data.save()
+    context = {"like":data.like , "dislike" : data.dislike}
+
+
+    return JsonResponse(context)
